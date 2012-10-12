@@ -32,7 +32,11 @@ class ApplicationHelperTest < ActionView::TestCase
         # escaping
         'http://фу"тыква' => '<a class="external" href="http://фу&quot;тыква">http://фу"тыква</a>',
         # wrap in angle brackets
-        '<http://фу.тыква>' => '&lt;<a class="external" href="http://фу.тыква">http://фу.тыква</a>&gt;'
+        '<http://фу.тыква>' => '&lt;<a class="external" href="http://фу.тыква">http://фу.тыква</a>&gt;',
+        'http://фу.тыква.' => '<a class="external" href="http://фу.тыква">http://фу.тыква</a>.',
+        'http://фу.тыква...' => '<a class="external" href="http://фу.тыква">http://фу.тыква</a>...',
+        'http://фу.тыква;' => '<a class="external" href="http://фу.тыква">http://фу.тыква</a>;',
+        'http://фу.тыква,' => '<a class="external" href="http://фу.тыква">http://фу.тыква</a>,'
     }
     to_test.each { |text, result| assert_equal "<p>#{result}</p>", textilizable(text) }
   end

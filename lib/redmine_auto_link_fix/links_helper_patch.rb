@@ -20,7 +20,7 @@ module RedmineAutoLinkFix
                         (\S+?)                   # url
                         (\/)?                    # slash
                       )
-                      ((?:&gt;)?|[^\S\=\/;\(\)]*?|\.?)  # post
+                      ((?:&gt;)?|[^\S\=\/\(\)]*?|[;\.\,]*?)  # post
                       (?=<|\s|$)
                      }x
     end
